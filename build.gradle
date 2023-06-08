@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.graalvm.buildtools.native' version '0.9.12'
+}
+
+group 'io.knifer'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    dv = [
+            junit     :      '5.9.2'
+    ]
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$dv.junit"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$dv.junit"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+application {
+    mainClass = 'io.knifer.demo.StudyDemo'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+graalvmNative {
+    binaries.all {
+        resources.autodetect()
+    }
+    toolchainDetection = false
+}
