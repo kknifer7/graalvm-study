@@ -8,6 +8,10 @@ group 'io.knifer'
 version '1.0-SNAPSHOT'
 
 repositories {
+    maven{
+        allowInsecureProtocol = true
+        url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+    }
     mavenCentral()
 }
 
