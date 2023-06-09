@@ -1,8 +1,6 @@
 package io.knifer.demo;
 
-import io.knifer.demo.pojo.Dragon;
 import org.graalvm.polyglot.Context;
-import org.graalvm.polyglot.Value;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
@@ -23,18 +21,6 @@ public class MainTest {
                     "js",
                     "console.log('------TEST START------\\nHello graalvm !\\n------TEST END------')"
             );
-        }
-    }
-
-    @Test
-    void helloWorld(){
-        try (Context context = Context.newBuilder().allowAllAccess(true).build()){
-            Dragon dragon = new Dragon(1000D, 500.5, "Alduin");
-
-            context.getBindings("js")
-                    .putMember("dragon", dragon);
-            context.eval("js", "dragon.thruum()");
-            info(dragon);
         }
     }
 

@@ -29,7 +29,6 @@ replay_pid*
 # Gradle
 HELP.md
 .gradle
-gradle
 build/
 /target/
 !gradle/wrapper/gradle-wrapper.jar
